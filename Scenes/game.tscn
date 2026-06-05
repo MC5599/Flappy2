@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://buc1x4dv5gqu"]
+
+[ext_resource type="Texture2D" uid="uid://c2vfvo1d13dpm" path="res://Sprites/FB_BG.png" id="1_xk4lt"]
+[ext_resource type="PackedScene" uid="uid://sdvkn7rf4alq" path="res://Scenes/player.tscn" id="2_eo6mh"]
+[ext_resource type="PackedScene" uid="uid://bp2rif4nfmg3l" path="res://Scenes/ground.tscn" id="3_inmvx"]
+[ext_resource type="PackedScene" uid="uid://d1u0byk81ik04" path="res://Scenes/BlockSpawner.tscn" id="5_pshoq"]
+[ext_resource type="PackedScene" uid="uid://b5w5af42a1vxs" path="res://Scenes/HUD.tscn" id="6_g16ky"]
+[ext_resource type="AudioStream" uid="uid://bb1jq40vcemgr" path="res://audio/FlappyTrack.mp3" id="7_nx3t7"]
+
+[node name="Game" type="Node2D"]
+
+[node name="BG" type="Sprite2D" parent="."]
+texture = ExtResource("1_xk4lt")
+centered = false
+
+[node name="BlockSpawner" parent="." instance=ExtResource("5_pshoq")]
+position = Vector2(400, 300)
+
+[node name="Ground" parent="." instance=ExtResource("3_inmvx")]
+position = Vector2(0, 480)
+
+[node name="Player" parent="." instance=ExtResource("2_eo6mh")]
+position = Vector2(41, 243)
+
+[node name="Hud" parent="." instance=ExtResource("6_g16ky")]
+
+[node name="FlappyTrack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_nx3t7")
+volume_db = -5.0
+autoplay = true

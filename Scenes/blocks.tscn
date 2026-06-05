@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://1wpyjn3nk3u"]
+
+[ext_resource type="Texture2D" uid="uid://b47mgyn82dt04" path="res://Sprites/Block.png" id="2_5cv2k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdex3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_frbiw"]
+size = Vector2(32, 244)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3wq5i"]
+size = Vector2(16, 72)
+
+[node name="Blocks" type="CharacterBody2D" groups=["blocks"]]
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jdex3")
+disabled = true
+
+[node name="BlockTop" type="Area2D" parent="."]
+position = Vector2(0, -100)
+
+[node name="Sprite2D" type="Sprite2D" parent="BlockTop"]
+position = Vector2(0, -16)
+texture = ExtResource("2_5cv2k")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockTop"]
+position = Vector2(0, -58)
+shape = SubResource("RectangleShape2D_frbiw")
+
+[node name="BlockBottom" type="Area2D" parent="."]
+position = Vector2(0, 100)
+
+[node name="Sprite2D" type="Sprite2D" parent="BlockBottom"]
+position = Vector2(0, 16)
+texture = ExtResource("2_5cv2k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockBottom"]
+position = Vector2(0, 58)
+shape = SubResource("RectangleShape2D_frbiw")
+
+[node name="ScoreArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea"]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_3wq5i")
+
+[connection signal="body_entered" from="BlockTop" to="." method="_on_block_body_entered"]
+[connection signal="body_entered" from="BlockBottom" to="." method="_on_block_body_entered"]
+[connection signal="body_entered" from="ScoreArea" to="." method="_on_score_area_body_entered"]
