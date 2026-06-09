@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://1wpyjn3nk3u"]
+[gd_scene format=3 uid="uid://1wpyjn3nk3u"]
 
+[ext_resource type="Script" uid="uid://2dyk86s742py" path="res://Scripts/Blocks.cs" id="1_7odni"]
 [ext_resource type="Texture2D" uid="uid://b47mgyn82dt04" path="res://Sprites/Block.png" id="2_5cv2k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jdex3"]
@@ -10,42 +11,43 @@ size = Vector2(32, 244)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3wq5i"]
 size = Vector2(16, 72)
 
-[node name="Blocks" type="CharacterBody2D" groups=["blocks"]]
+[node name="Blocks" type="CharacterBody2D" unique_id=1003046529 groups=["blocks"]]
 scale = Vector2(2, 2)
+script = ExtResource("1_7odni")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=984973504]
 shape = SubResource("RectangleShape2D_jdex3")
 disabled = true
 
-[node name="BlockTop" type="Area2D" parent="."]
+[node name="BlockTop" type="Area2D" parent="." unique_id=1331332194]
 position = Vector2(0, -100)
 
-[node name="Sprite2D" type="Sprite2D" parent="BlockTop"]
+[node name="Sprite2D" type="Sprite2D" parent="BlockTop" unique_id=1969111272]
 position = Vector2(0, -16)
 texture = ExtResource("2_5cv2k")
 flip_v = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockTop"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockTop" unique_id=1035049996]
 position = Vector2(0, -58)
 shape = SubResource("RectangleShape2D_frbiw")
 
-[node name="BlockBottom" type="Area2D" parent="."]
+[node name="BlockBottom" type="Area2D" parent="." unique_id=1590441480]
 position = Vector2(0, 100)
 
-[node name="Sprite2D" type="Sprite2D" parent="BlockBottom"]
+[node name="Sprite2D" type="Sprite2D" parent="BlockBottom" unique_id=125702631]
 position = Vector2(0, 16)
 texture = ExtResource("2_5cv2k")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockBottom"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockBottom" unique_id=1429858703]
 position = Vector2(0, 58)
 shape = SubResource("RectangleShape2D_frbiw")
 
-[node name="ScoreArea" type="Area2D" parent="."]
+[node name="ScoreArea" type="Area2D" parent="." unique_id=1944705532]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea" unique_id=272636856]
 position = Vector2(8, 0)
 shape = SubResource("RectangleShape2D_3wq5i")
 
-[connection signal="body_entered" from="BlockTop" to="." method="_on_block_body_entered"]
-[connection signal="body_entered" from="BlockBottom" to="." method="_on_block_body_entered"]
-[connection signal="body_entered" from="ScoreArea" to="." method="_on_score_area_body_entered"]
+[connection signal="body_entered" from="BlockTop" to="." method="OnBlockBodyEntered"]
+[connection signal="body_entered" from="BlockBottom" to="." method="OnBlockBodyEntered"]
+[connection signal="body_entered" from="ScoreArea" to="." method="OnScoreAreaBodyEntered"]

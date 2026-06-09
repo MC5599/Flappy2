@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://sdvkn7rf4alq"]
+[gd_scene format=3 uid="uid://sdvkn7rf4alq"]
 
+[ext_resource type="Script" uid="uid://bieg68q8t5xn4" path="res://Scripts/Player.cs" id="1_fkybt"]
 [ext_resource type="Texture2D" uid="uid://b5rfyhsgpxapc" path="res://Sprites/bird.png" id="2_5yxyy"]
 [ext_resource type="AudioStream" uid="uid://c5i1ii5rrtmw4" path="res://audio/Hit.mp3" id="3_ixt14"]
 [ext_resource type="AudioStream" uid="uid://chcb3tipsi22o" path="res://audio/Wind.mp3" id="3_m5gm1"]
-[ext_resource type="AudioStream" uid="uid://congoc2vsairr" path="res://audio/Ding.mp3" id="5_0la7j"]
+[ext_resource type="AudioStream" uid="uid://f3nror26tcr0" path="res://audio/Ding.mp3" id="5_0la7j"]
 
 [sub_resource type="Animation" id="Animation_qh7n7"]
 length = 0.001
@@ -91,40 +92,39 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7fcl7"]
 _data = {
-"RESET": SubResource("Animation_qh7n7"),
-"flap": SubResource("Animation_rebcw"),
-"idle": SubResource("Animation_rn4l7")
+&"RESET": SubResource("Animation_qh7n7"),
+&"flap": SubResource("Animation_rebcw"),
+&"idle": SubResource("Animation_rn4l7")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hd03n"]
 radius = 14.0
 
-[node name="Player" type="RigidBody2D"]
+[node name="Player" type="RigidBody2D" unique_id=545654824]
 gravity_scale = 0.0
+script = ExtResource("1_fkybt")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_7fcl7")
-}
-autoplay = "idle"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=509901024]
+libraries/ = SubResource("AnimationLibrary_7fcl7")
+autoplay = &"idle"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=737793020]
 position = Vector2(0, -5)
 scale = Vector2(2, 2)
 texture = ExtResource("2_5yxyy")
 hframes = 3
 frame = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=940301095]
 shape = SubResource("CircleShape2D_hd03n")
 
-[node name="HitSound" type="AudioStreamPlayer" parent="."]
+[node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=149883912]
 stream = ExtResource("3_ixt14")
 volume_db = -10.0
 
-[node name="FlapSound" type="AudioStreamPlayer" parent="."]
+[node name="FlapSound" type="AudioStreamPlayer" parent="." unique_id=533361874]
 stream = ExtResource("3_m5gm1")
 
-[node name="ScoreSound" type="AudioStreamPlayer" parent="."]
+[node name="ScoreSound" type="AudioStreamPlayer" parent="." unique_id=2128650378]
 stream = ExtResource("5_0la7j")
 volume_db = -10.0

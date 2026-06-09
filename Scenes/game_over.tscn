@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dy3qqy6vslyuo"]
+[gd_scene format=3 uid="uid://dy3qqy6vslyuo"]
 
+[ext_resource type="Script" uid="uid://ba46h5h2b8xvr" path="res://Scripts/GameOver.cs" id="1_8fo1c"]
 [ext_resource type="Texture2D" uid="uid://dk5cdwbxoy5ee" path="res://Sprites/EndMenu.png" id="2_tqr1g"]
 
-[node name="GameOver" type="Control"]
+[node name="GameOver" type="Control" unique_id=1035343049]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -10,8 +11,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8fo1c")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1662383774]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,14 +21,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="End" type="TextureRect" parent="Panel"]
-layout_mode = 2
+[node name="End" type="TextureRect" parent="Panel" unique_id=662298430]
+layout_mode = 0
 offset_right = 288.0
 offset_bottom = 512.0
 grow_horizontal = 2
 texture = ExtResource("2_tqr1g")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=442167804]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -36,14 +38,14 @@ offset_right = 110.0
 offset_bottom = 116.0
 grow_horizontal = 2
 
-[node name="Retry" type="Button" parent="Panel/VBoxContainer"]
+[node name="Retry" type="Button" parent="Panel/VBoxContainer" unique_id=402223119]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 40
 text = "Retry"
 
-[node name="ScoreText" type="Label" parent="Panel/VBoxContainer"]
+[node name="ScoreText" type="Label" parent="Panel/VBoxContainer" unique_id=109717633]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
@@ -52,7 +54,7 @@ text = "Score: 9999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HighScoreText" type="Label" parent="Panel/VBoxContainer"]
+[node name="HighScoreText" type="Label" parent="Panel/VBoxContainer" unique_id=1927060794]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
@@ -61,4 +63,4 @@ text = "Best: 9999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="Panel/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Retry" to="." method="OnRetryPressed"]
